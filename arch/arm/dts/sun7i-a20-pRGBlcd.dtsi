@@ -444,6 +444,10 @@
 					#address-cells = <1>;
 					#size-cells = <0>;
 					reg = <1>;
+                    tcon0_out_lcd: endpoint@0 {
+                        reg = <0>;
+                        remote-endpoint = <&lcd_in_tcon0>;
+                    };
 
 					tcon0_out_hdmi: endpoint@1 {
 						reg = <1>;
@@ -646,6 +650,19 @@
 			clocks = <&ccu CLK_AHB_SS>, <&ccu CLK_SS>;
 			clock-names = "ahb", "mod";
 		};
+
+        panel: panel {
+            #address-cells = <1>;
+            #size-cells = <0>;
+            port {
+                #address-cells = <1>;
+                #size-cells = <0>;
+                lcd_in_tcon0: endpoint {
+                    remote-endpoint = <&tcon0_out_lcd>;
+                };
+            };
+        };
+
 
 		hdmi: hdmi@1c16000 {
 			compatible = "allwinner,sun7i-a20-hdmi",
@@ -945,6 +962,18 @@
 				pins = "PD10", "PD11", "PD12", "PD13", "PD14",
 				       "PD15", "PD16", "PD17", "PD18", "PD19";
 				function = "lvds1";
+			};
+
+            /omit-if-no-ref/
+            lcd0_rgb888_pins: lcd0-rgb888 {
+				pins = "PD0", "PD1", "PD2", "PD3",
+				       "PD4", "PD5", "PD6", "PD7",
+				       "PD8", "PD9", "PD10", "PD11",
+				       "PD12", "PD13", "PD14", "PD15",
+				       "PD16", "PD17", "PD18", "PD19",
+				       "PD20", "PD21", "PD22", "PD23",
+				       "PD24", "PD25", "PD26", "PD27";
+				function = "lcd0";
 			};
 
 			/omit-if-no-ref/

@@ -142,13 +142,13 @@
 #define CONFIG_SYS_MMC_MAX_DEVICE	4
 #endif
 
-#ifndef CONFIG_MACH_SUN8I_V3S
+//#ifndef CONFIG_MACH_SUN8I_V3S
 /* 64MB of malloc() pool */
-#define CONFIG_SYS_MALLOC_LEN		(CONFIG_ENV_SIZE + (64 << 20))
-#else
+//#define CONFIG_SYS_MALLOC_LEN		(CONFIG_ENV_SIZE + (64 << 20))
+//#else
 /* 2MB of malloc() pool */
 #define CONFIG_SYS_MALLOC_LEN		(CONFIG_ENV_SIZE + (2 << 20))
-#endif
+//#endif
 
 /*
  * Miscellaneous configurable options
@@ -300,6 +300,7 @@ extern int soft_i2c_gpio_scl;
  * 32M uncompressed kernel, 16M compressed kernel, 1M fdt,
  * 1M script, 1M pxe and the ramdisk at the end.
  */
+/*
 #ifndef CONFIG_MACH_SUN8I_V3S
 #define BOOTM_SIZE     __stringify(0xa000000)
 #define KERNEL_ADDR_R  __stringify(SDRAM_OFFSET(2000000))
@@ -308,6 +309,8 @@ extern int soft_i2c_gpio_scl;
 #define PXEFILE_ADDR_R __stringify(SDRAM_OFFSET(3200000))
 #define RAMDISK_ADDR_R __stringify(SDRAM_OFFSET(3300000))
 #else
+*/
+
 /*
  * 64M RAM minus 2MB heap + 16MB for u-boot, stack, fb, etc.
  * 16M uncompressed kernel, 8M compressed kernel, 1M fdt,
@@ -319,7 +322,7 @@ extern int soft_i2c_gpio_scl;
 #define SCRIPT_ADDR_R  __stringify(SDRAM_OFFSET(1900000))
 #define PXEFILE_ADDR_R __stringify(SDRAM_OFFSET(1A00000))
 #define RAMDISK_ADDR_R __stringify(SDRAM_OFFSET(1B00000))
-#endif
+//#endif
 #endif
 
 #define MEM_LAYOUT_ENV_SETTINGS \
